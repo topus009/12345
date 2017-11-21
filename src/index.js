@@ -5,7 +5,6 @@ import { Provider } from 'react-redux';
 import App from './containers/App';
 import configureStore from './store/configureStore';
 import './styles/app.css';
-import '../node_modules/leaflet/dist/leaflet.css';
 import registerServiceWorker from './registerServiceWorker';
 
 const store = configureStore()

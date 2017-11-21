@@ -1,6 +1,8 @@
 import { combineReducers } from 'redux'
-import page from './page'
+import calendar from './calendar'
+import app from './app'
 
 export default combineReducers({
-    page, 
+    calendar,
+    app, 
 })

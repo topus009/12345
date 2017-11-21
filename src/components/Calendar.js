@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import * as appActions from '../actions/AppActions';
-import Calendar from '../components/Calendar';
+import * as calendarActions from '../actions/CalendarActions';
 
-class App extends Component {
+class Calendar extends Component {
   // constructor(props) {
   //   super(props);
   //     this.add = this.add.bind(this);
@@ -22,8 +21,8 @@ class App extends Component {
 
     return (
       <div>
-        <Calendar/>
-        <div className=''>
+        <div className='calendar'>
+          
         </div>
       </div>
     )
@@ -32,14 +31,12 @@ class App extends Component {
 
 const mapStateToProps = state => {
   return {
-    app: state.app
-  }
-};
+    calendar: state.calendar
+  }}
 
 const mapDispatchToProps = dispatch => {
  return {
-   appActions: bindActionCreators(appActions, dispatch)
- }
-};
+   calendarActions: bindActionCreators(calendarActions, dispatch)
+ }}
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(Calendar);

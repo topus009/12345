@@ -1,6 +1,6 @@
 import { 
-    GET_LIST_SUCCESS,
-} from '../constants/Page';
+    APP,
+} from '../constants/App';
 import { preloadList } from '../helpers/preloadData';
 
 export function preload_List () {
@@ -10,7 +10,7 @@ export function preload_List () {
             JSON.parse(localStorage.getItem('LOCAL_LIST')) : null
 
             dispatch({
-                type: GET_LIST_SUCCESS,
+                type: APP,
                 payload: LOCAL_STORAGE !== null ? LOCAL_STORAGE : response
             });
         }, error => console.warn(`Rejected: ${error}`))

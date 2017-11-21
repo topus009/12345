@@ -1,13 +1,13 @@
 import {
-    GET_LIST_SUCCESS
-} from '../constants/Page'
+    APP
+} from '../constants/App'
 const initialState = {
     // geos: null,
 }
 
-export default function page(state = initialState, action) {
+export default function app(state = initialState, action) {
     switch (action.type) {
-        case GET_LIST_SUCCESS:  
+        case APP:  
             return {
                 ...state,
                 // geos: map(action.payload),
