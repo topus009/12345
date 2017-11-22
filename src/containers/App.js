@@ -3,28 +3,39 @@ import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import * as appActions from '../actions/AppActions';
 import Calendar from '../components/Calendar';
+import Tasks from '../components/Tasks';
+
 
 class App extends Component {
-  // constructor(props) {
-  //   super(props);
-  //     this.add = this.add.bind(this);
+  constructor(props) {
+    super(props);
+      this.selectDay = this.selectDay.bind(this);
   //     this.remove = this.remove.bind(this);
     
-  //     this.state = {
-  //     }
-  //   }
+      this.state = {
+        isTasksVisible: false,
+      }
+    }
   
   componentDidMount() {
     // this.props.PageActions.preload_List();
   }
 
-  render() {
+  selectDay() {
+    const { isTasksVisible } = this.state;
+    this.setState({
+      isTasksVisible: !isTasksVisible,
+    });
+  }
 
+
+  render() {
     return (
       <div>
-        <Calendar/>
-        <div className=''>
-        </div>
+        <Calendar
+          selectDay={() => this.selectDay()}
+        />
+        <Tasks/>
       </div>
     )
   }
