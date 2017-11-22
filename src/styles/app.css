@@ -3,3 +3,82 @@ body {
   margin: 0;
   padding: 0;
 }
+
+.app {
+  padding: 0 16px;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-rows: auto;
+  grid-template-columns: 275px 1fr;
+  grid-column-gap: 16px;
+}
+
+
+.calendar {
+  border: 1px dashed black;
+}
+
+
+
+
+
+
+
+
+.tasks {
+  padding: 16px 0;
+  height: 275px;
+  max-height: 275px;
+  border: 1px dashed black;  
+}
+
+.tasks .header {
+  background-color: rgb(255, 174, 0);
+  line-height: 24px;
+  vertical-align: middle;
+  text-align: center;
+  height: 24px;
+}
+.tasks .taskListWrapper {
+  overflow-y: scroll;
+  max-height: calc(275px - 36px - 24px); 
+}
+
+.tasks .task {
+  padding: 0 16px 0 16px;
+  height: 24px;
+  display: flex;
+  justify-content: space-between;
+  line-height: 24px;
+  vertical-align: middle;
+}
+
+.tasks .task:hover {
+  background-color: rgb(255, 229, 143);
+}
+
+.tasks .text {
+  
+}
+
+.tasks .delete {
+
+}
+
+.tasks .form {
+  height: 24px;
+  line-height: 24px;
+  align-items: center;
+  background-color: rgb(189, 255, 66);
+  padding: 0 16px;
+}
+
+.tasks label {
+
+}
+
+.tasks input {
+  
+}

@@ -51,7 +51,7 @@ class Calendar extends Component {
 
 
     return (
-      <div>
+      <div className='calendar'>
         <style>{styleData}</style>
         <DayPicker
           onDayClick={this.onDayClick}

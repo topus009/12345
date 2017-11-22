@@ -1,5 +1,5 @@
 import { 
-    TASKS,
+    GET_LIST_SUCCESS,
 } from '../constants/Tasks';
 import { preloadList } from '../helpers/preloadData';
 
@@ -10,7 +10,7 @@ export function preload_List () {
             JSON.parse(localStorage.getItem('LOCAL_LIST')) : null
 
             dispatch({
-                type: TASKS,
+                type: GET_LIST_SUCCESS,
                 payload: LOCAL_STORAGE !== null ? LOCAL_STORAGE : response
             });
         }, error => console.warn(`Rejected: ${error}`))

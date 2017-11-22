@@ -1,11 +1,11 @@
 export function preloadList() {
-  return getData();
+  let url = 'https://topus009.github.io/ets/tasksData.json';  
+  return getData(url);
 }
     
-function getData() {
+function getData(url) {
   return new Promise((resolve, reject) => {
     let xhr = new XMLHttpRequest();
-    let url = 'https://topus009.github.io/ets/geoData.json';
 
     xhr.open('GET', url, false);
     xhr.onload = function() {
