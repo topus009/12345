@@ -1,18 +1,24 @@
 import {
-    APP
+    GET_LIST_SUCCESS
 } from '../constants/App'
 const initialState = {
-    // geos: null,
+    tasks: {},
+    dates: [],
 }
 
 export default function app(state = initialState, action) {
     switch (action.type) {
-        case APP:  
+        case GET_LIST_SUCCESS:  
+            const { payload } = action;
             return {
                 ...state,
-                // geos: map(action.payload),
+                tasks: {...payload},
+                dates: [Object.keys(payload)],
             }
         default:
             return {...state}
     }
 }
+
+
+// [Object.entries(state.app.tasks)]

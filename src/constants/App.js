@@ -1,1 +1,1 @@
-export const APP = 'APP'
+export const GET_LIST_SUCCESS = 'GET_LIST_SUCCESS'

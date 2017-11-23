@@ -17,7 +17,7 @@ class App extends Component {
     }
   
   componentDidMount() {
-    // this.props.PageActions.preload_List();
+    this.props.appActions.preload_List();
   }
 
   selectDay() {
@@ -27,22 +27,32 @@ class App extends Component {
     });
   }
 
-
   render() {
+    const { 
+      dates, 
+      tasks 
+    } = this.props;
+
     return (
       <div className='wrapper'>
         <Calendar
           selectDay={() => this.selectDay()}
+          dates={dates}
         />
-        <Tasks/>
+        <Tasks tasks={tasks}/>
       </div>
     )
   }
 }
 
 const mapStateToProps = state => {
+  const {
+    dates, 
+    tasks,
+  } = state.app;
   return {
-    app: state.app
+    dates: dates,
+    tasks: tasks,
   }
 };
 
@@ -52,4 +62,4 @@ const mapDispatchToProps = dispatch => {
  }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(App)
+export default connect(mapStateToProps, mapDispatchToProps)(App);

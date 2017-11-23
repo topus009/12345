@@ -1,9 +1,6 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as tasksActions from '../actions/TasksActions';
 
-class Calendar extends Component {
+class Tasks extends Component {
   constructor(props) {
     super(props);
       this.delete = this.delete.bind(this);
@@ -66,14 +63,4 @@ class Calendar extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    tasks: state.tasks
-  }}
-
-const mapDispatchToProps = dispatch => {
- return {
-  tasksActions: bindActionCreators(tasksActions, dispatch)
- }}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Calendar);
+export default Tasks;

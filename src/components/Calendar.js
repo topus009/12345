@@ -1,14 +1,10 @@
 import React, { Component } from 'react';
-import { bindActionCreators } from 'redux';
-import { connect } from 'react-redux';
-import * as calendarActions from '../actions/CalendarActions';
 import DayPicker from 'react-day-picker';
 import 'react-day-picker/lib/style.css';
 import { 
   localeUtils,
   styleData,
   modifiersData,
-
 } from '../helpers/calendarCore';
 
 class Calendar extends Component {
@@ -47,8 +43,6 @@ class Calendar extends Component {
   render() {
     const { selectedDay } = this.state;
 
-    
-
 
     return (
       <div className='calendar'>
@@ -68,14 +62,4 @@ class Calendar extends Component {
   }
 }
 
-const mapStateToProps = state => {
-  return {
-    calendar: state.calendar
-  }}
-
-const mapDispatchToProps = dispatch => {
- return {
-   calendarActions: bindActionCreators(calendarActions, dispatch)
- }}
-
-export default connect(mapStateToProps, mapDispatchToProps)(Calendar);
+export default Calendar;
