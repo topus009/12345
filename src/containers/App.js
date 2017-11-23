@@ -10,7 +10,6 @@ class App extends Component {
   constructor(props) {
     super(props);
       this.selectDay = this.selectDay.bind(this);
-  //     this.remove = this.remove.bind(this);
     
       this.state = {
         isTasksVisible: false,
