@@ -1,10 +1,11 @@
 import { 
     GET_LIST_SUCCESS,
+    SELECT_DAY,
 } from '../constants/App';
 import { preloadList } from '../helpers/preloadData';
 
-export function preload_List () {
-    return (dispatch) => {
+export function preload_List() {
+    return dispatch => {
         preloadList().then(response => {
             const LOCAL_STORAGE = localStorage.getItem('LOCAL_LIST') ? 
             JSON.parse(localStorage.getItem('LOCAL_LIST')) : null
@@ -14,5 +15,14 @@ export function preload_List () {
                 payload: LOCAL_STORAGE !== null ? LOCAL_STORAGE : response
             });
         }, error => console.warn(`Rejected: ${error}`))
+    }
+}
+
+export function selectDay(day) {
+    return dispatch => {
+            dispatch({
+                type: SELECT_DAY,
+                payload: day
+            });
     }
 }

@@ -17,29 +17,42 @@ class App extends Component {
     }
   
   componentDidMount() {
-    this.props.appActions.preload_List();
+    const { preload_List } = this.props.appActions; 
+    preload_List();
   }
 
-  selectDay() {
-    const { isTasksVisible } = this.state;
+  selectDay(day, selected) {
+    const { selectDay } = this.props.appActions; 
     this.setState({
-      isTasksVisible: !isTasksVisible,
+      isTasksVisible: !selected,
     });
+    selectDay(!selected ? day : null);
   }
 
   render() {
     const { 
       dates, 
-      tasks 
+      tasks,
+      selectedDay,
+      appActions,
     } = this.props;
-
+    const { 
+      isTasksVisible,
+    } = this.state;
+    const { selectDay } = appActions;
     return (
       <div className='wrapper'>
         <Calendar
-          selectDay={() => this.selectDay()}
+          selectDay={(day, selected) => this.selectDay(day, selected)}
+          selectedDay={selectedDay}
           dates={dates}
         />
-        <Tasks tasks={tasks}/>
+        {isTasksVisible ? 
+          <Tasks 
+            tasks={tasks} 
+            selectedDay={selectedDay}
+          /> : <div/>
+        } 
       </div>
     )
   }
@@ -49,16 +62,18 @@ const mapStateToProps = state => {
   const {
     dates, 
     tasks,
+    selectedDay,
   } = state.app;
   return {
     dates: dates,
     tasks: tasks,
+    selectedDay: selectedDay,
   }
 };
 
 const mapDispatchToProps = dispatch => {
  return {
-   appActions: bindActionCreators(appActions, dispatch)
+   appActions: bindActionCreators(appActions, dispatch),
  }
 };
 

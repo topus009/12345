@@ -4,18 +4,13 @@ import 'react-day-picker/lib/style.css';
 import { 
   localeUtils,
   styleData,
-  modifiersData,
+  datesArr,
 } from '../helpers/calendarCore';
 
 class Calendar extends Component {
   constructor(props) {
     super(props);
       this.onDayClick = this.onDayClick.bind(this);
-      this.state = {
-        selectedDay: null,
-        // currYear: d.getFullYear();
-        // currMonth:
-      }
     }
 
   componentWillMount() {
@@ -27,22 +22,16 @@ class Calendar extends Component {
   }
 
   onDayClick(day, { selected }) {
-    console.warn(day)
-    console.log(selected)
-    if (selected) {
-      this.setState({ 
-        selectedDay: null,
-      });
-      return;
-    }
-    this.setState({ 
-      selectedDay: day,
-    });
+    const { selectDay } = this.props;
+    selectDay(day, selected);
   }
 
   render() {
-    const { selectedDay } = this.state;
-
+    const { 
+      dates, 
+      selectedDay,
+    } = this.props;
+    let modifiers = dates[0] && dates[0].length ? {highlighted: datesArr(dates)} : {};
 
     return (
       <div className='calendar'>
@@ -52,8 +41,7 @@ class Calendar extends Component {
           selectedDays={selectedDay}
           locale="ru"
           localeUtils={localeUtils}
-          modifiers={modifiersData}
-          // canChangeMonth={true}
+          modifiers={modifiers}
           // className="calendar"
           // renderDay={this.renderDay}
         />

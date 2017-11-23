@@ -24,36 +24,26 @@ class Tasks extends Component {
   }
 
   render() {
-    const date = '22.11.2017';
-    const tasks = [
-      'Поесть',
-      'Прибраться в комнате',
-      'Поспать',
-      'Попрограммировать',
-      'Поехать на собеседование',
-      'Почитать learn.javascript',
-      'Поесть',
-      'Прибраться в комнате',
-      'Поспать',
-      'Попрограммировать',
-      'Поехать на собеседование',
-      'Почитать learn.javascript',
-    ];
-    const tasksToRender = tasks.map((t,i) => {
-      return (
-      <div key={'task_' + i} className='task'>
-        <span className='text'>{t}</span>
-        <span className='delete' onClick={() => this.delete(i)}>X</span>
-      </div>)
-    });
+    const {
+      selectedDay,
+      tasks,
+    } = this.props;
+    const day = selectedDay && selectedDay.toLocaleDateString('ru').split('.').reverse().join('.');
 
+    const tasksToRender = tasks && tasks[day] && tasks[day].map((t,i) => {
+      return (
+        <li key={'task_' + i} className='task'>{t}
+          <span className='delete' onClick={() => this.delete(i)}>X</span>
+        </li>
+    )});
 
     return (
       <div className='tasks'>
-        <div className='header'>{`Задачи на ${date}`}</div>
-        <div className='taskListWrapper'>
-          {tasksToRender}
-        </div>
+        <div className='header'>{`Задачи на ${day}`}</div>
+        {tasksToRender &&
+          <ul className='taskListWrapper'>
+             {tasksToRender}
+          </ul>}
         <div className='form'>
           <label htmlFor='input'>Создать задачу: </label>
           <input id='input' type='text'/>

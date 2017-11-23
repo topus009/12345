@@ -49,22 +49,18 @@ body {
 .tasks .task {
   padding: 0 16px 0 16px;
   height: 24px;
-  display: flex;
-  justify-content: space-between;
   line-height: 24px;
   vertical-align: middle;
+  position: relative;
 }
 
 .tasks .task:hover {
   background-color: rgb(255, 229, 143);
 }
 
-.tasks .text {
-  
-}
-
 .tasks .delete {
-
+  position: absolute;
+  right: 16px;
 }
 
 .tasks .form {
