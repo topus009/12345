@@ -15,23 +15,10 @@ body {
   grid-column-gap: 16px;
 }
 
-
-.calendar {
-  border: 1px dashed black;
-}
-
-
-
-
-
-
-
-
 .tasks {
   padding: 16px 0;
   height: 275px;
   max-height: 275px;
-  border: 1px dashed black;  
 }
 
 .tasks .header {
@@ -41,9 +28,13 @@ body {
   text-align: center;
   height: 24px;
 }
+
 .tasks .taskListWrapper {
-  overflow-y: scroll;
-  max-height: calc(275px - 36px - 24px); 
+  overflow-y: auto;
+  max-height: calc(275px - 36px - 24px);
+  border-left: 1px solid #eaecec;
+  border-right: 1px solid #eaecec;
+  margin: 0;
 }
 
 .tasks .task {
@@ -69,12 +60,4 @@ body {
   align-items: center;
   background-color: rgb(189, 255, 66);
   padding: 0 16px;
-}
-
-.tasks label {
-
-}
-
-.tasks input {
-  
 }

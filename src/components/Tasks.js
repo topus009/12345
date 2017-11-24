@@ -1,52 +1,60 @@
 import React, { Component } from 'react';
+import TaskItem from './TaskItem';
 
 class Tasks extends Component {
   constructor(props) {
     super(props);
-      this.delete = this.delete.bind(this);
-      this.state = {
-        // selectedDay: null,
-        // currYear: d.getFullYear();
-        // currMonth:
-      }
+      this.saveTask = this.saveTask.bind(this);
+      this.deleteTask = this.deleteTask.bind(this);
     }
 
-  componentWillMount() {
-    // calendarCore();
+  saveTask(e, day) {
+    const { saveTask } = this.props;
+    const { value } = e.target;
+    if (e.keyCode === 13 && value.trim().length > 0) {
+      saveTask(day, value);
+      this.refs.textInput.value = '';
+      this.forceUpdate();
+    }
   }
 
-  componentDidMount() {
-    // this.props.PageActions.preload_List();
-  }
-
-  delete(i) {
-    console.warn(i);
+  deleteTask(day, i) {
+    const { deleteTask } = this.props;
+    deleteTask(day, i);
+    this.forceUpdate();
   }
 
   render() {
     const {
       selectedDay,
       tasks,
+      deleteTask,
+      saveTask,
     } = this.props;
-    const day = selectedDay && selectedDay.toLocaleDateString('ru').split('.').reverse().join('.');
-
-    const tasksToRender = tasks && tasks[day] && tasks[day].map((t,i) => {
-      return (
-        <li key={'task_' + i} className='task'>{t}
-          <span className='delete' onClick={() => this.delete(i)}>X</span>
-        </li>
-    )});
 
     return (
       <div className='tasks'>
-        <div className='header'>{`Задачи на ${day}`}</div>
-        {tasksToRender &&
+        <div className='header'>{`Задачи на ${selectedDay}`}</div>
+        {tasks && tasks[selectedDay] && 
           <ul className='taskListWrapper'>
-             {tasksToRender}
-          </ul>}
+          {tasks[selectedDay].map((t,i) => {
+              return (
+                <TaskItem 
+                  key={i} t={t} i={i} selectedDay={selectedDay} deleteTask={deleteTask}
+                />
+              )}
+            )
+          }
+          </ul>  
+        }
         <div className='form'>
           <label htmlFor='input'>Создать задачу: </label>
-          <input id='input' type='text'/>
+          <input 
+            id='input' 
+            type='text'
+            onKeyDown={e => this.saveTask(e, selectedDay)}
+            ref='textInput'
+          />
         </div>
       </div>
     )

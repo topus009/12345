@@ -34,12 +34,18 @@ class App extends Component {
       dates, 
       tasks,
       selectedDay,
+      selectedFormattedDay,
       appActions,
     } = this.props;
     const { 
       isTasksVisible,
     } = this.state;
-    const { selectDay } = appActions;
+    const { 
+      saveTask,
+      deleteTask,
+    } = appActions;
+    // const day = selectedDay && selectedDay.toLocaleDateString('ru').split('.').reverse().join('.');
+
     return (
       <div className='wrapper'>
         <Calendar
@@ -50,7 +56,9 @@ class App extends Component {
         {isTasksVisible ? 
           <Tasks 
             tasks={tasks} 
-            selectedDay={selectedDay}
+            selectedDay={selectedFormattedDay}
+            saveTask={saveTask}
+            deleteTask={deleteTask}
           /> : <div/>
         } 
       </div>
@@ -63,11 +71,13 @@ const mapStateToProps = state => {
     dates, 
     tasks,
     selectedDay,
+    selectedFormattedDay,
   } = state.app;
   return {
     dates: dates,
     tasks: tasks,
     selectedDay: selectedDay,
+    selectedFormattedDay: selectedFormattedDay,
   }
 };
 

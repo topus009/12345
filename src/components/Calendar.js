@@ -13,14 +13,6 @@ class Calendar extends Component {
       this.onDayClick = this.onDayClick.bind(this);
     }
 
-  componentWillMount() {
-    // calendarCore();
-  }
-
-  componentDidMount() {
-    // this.props.PageActions.preload_List();
-  }
-
   onDayClick(day, { selected }) {
     const { selectDay } = this.props;
     selectDay(day, selected);
