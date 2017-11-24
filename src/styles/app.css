@@ -37,6 +37,12 @@ body {
   margin: 0;
 }
 
+.tasks .empty {
+  border-left: 1px solid #eaecec;
+  border-right: 1px solid #eaecec;
+  padding: 0 16px;
+}  
+
 .tasks .task {
   padding: 0 16px 0 16px;
   height: 24px;

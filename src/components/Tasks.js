@@ -35,7 +35,7 @@ class Tasks extends Component {
     return (
       <div className='tasks'>
         <div className='header'>{`Задачи на ${selectedDay}`}</div>
-        {tasks && tasks[selectedDay] && 
+        {tasks && tasks[selectedDay] ?  
           <ul className='taskListWrapper'>
           {tasks[selectedDay].map((t,i) => {
               return (
@@ -45,7 +45,8 @@ class Tasks extends Component {
               )}
             )
           }
-          </ul>  
+          </ul> :
+          <div className='empty'>Событий нет.</div> 
         }
         <div className='form'>
           <label htmlFor='input'>Создать задачу: </label>
